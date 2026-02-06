@@ -1,6 +1,6 @@
 import { SlangItem, Category } from './types';
 
-export const CATEGORIES: Category[] = ['Todas', 'Rua', 'Juventude', 'Cotidiano', 'Música', 'Humor', 'Internet'];
+export const CATEGORIES: Category[] = ['Todas', 'Saudações', 'Rua', 'Juventude', 'Cotidiano', 'Família', 'Música', 'Humor', 'Internet'];
 
 export const INITIAL_SLANG_DATA: SlangItem[] = [
   {
@@ -125,8 +125,168 @@ export const INITIAL_SLANG_DATA: SlangItem[] = [
     example: 'O arrocha ontem foi até de manhã.',
     category: 'Música',
     origin: 'Benguela'
+  },
+  {
+    id: '16',
+    term: 'Kamba diami',
+    definition: 'Meu amigo, meu companheiro.',
+    example: 'Aquele é o meu kamba diami de longa data.',
+    category: 'Rua',
+    origin: 'Luanda',
+    synonyms: ['Meu amigo']
+  },
+  {
+    id: '17',
+    term: 'Mô mambo',
+    definition: 'Minha coisa, meu objeto ou meu assunto pessoal.',
+    example: 'Não mexe aí, esse é mô mambo.',
+    category: 'Cotidiano'
+  },
+  {
+    id: '18',
+    term: 'Mô kit',
+    definition: 'Minha namorada, companheira ou "bae".',
+    example: 'Vou sair com mô kit hoje à noite.',
+    category: 'Juventude'
+  },
+  {
+    id: '19',
+    term: 'Cubico',
+    definition: 'Casa, lar, residência.',
+    example: 'Vamos lá no meu cubico relaxar um pouco.',
+    category: 'Cotidiano',
+    synonyms: ['Mbangi', 'Casa']
+  },
+  {
+    id: '20',
+    term: 'Tuchu',
+    definition: 'Quarto, aposento privado.',
+    example: 'Vou ficar no tuchu a descansar.',
+    category: 'Cotidiano',
+    synonyms: ['Palé']
+  },
+  {
+    id: '21',
+    term: 'Tropúkuna',
+    definition: 'Amigo muito íntimo, comparsa ou parceiro de confiança.',
+    example: 'Nós somos tropúkuna desde o tempo da escola.',
+    category: 'Rua'
+  },
+  {
+    id: '22',
+    term: 'Mamoite',
+    definition: 'Mãe, progenitora.',
+    example: 'A minha mamoite cozinha o melhor funge da banda.',
+    category: 'Família'
+  },
+  {
+    id: '23',
+    term: 'Papoite',
+    definition: 'Pai, progenitor.',
+    example: 'O meu papoite é um kota com muita visão.',
+    category: 'Família'
+  },
+  {
+    id: '24',
+    term: 'Ndenge',
+    definition: 'Criança, menino mais novo ou o irmão caçula.',
+    example: 'Aquele ndenge é muito esperto.',
+    category: 'Família',
+    synonyms: ['Cassule', 'Puto']
+  },
+  {
+    id: '25',
+    term: 'Pops',
+    definition: 'Carro, veículo automóvel.',
+    example: 'O pops dele está sempre a brilhar.',
+    category: 'Cotidiano',
+    origin: 'Juventude'
+  },
+  {
+    id: '26',
+    term: 'Ngunga',
+    definition: 'Igreja, local de culto.',
+    example: 'Domingo é dia de ir na ngunga.',
+    category: 'Cotidiano',
+    synonyms: ['Nguelé']
+  },
+  {
+    id: '27',
+    term: 'Buchu',
+    definition: 'Pão.',
+    example: 'Traz um buchu quente da padaria para o pequeno almoço.',
+    category: 'Cotidiano'
+  },
+  {
+    id: '28',
+    term: 'Yoga',
+    definition: 'Alguém grande, importante ou de grande estatura física.',
+    example: 'Aquele moço é um yoga, tem que se respeitar.',
+    category: 'Rua'
+  },
+  {
+    id: '29',
+    term: 'Mambo gato',
+    definition: 'Coisa ruim, situação desagradável ou azar.',
+    example: 'O exame foi um mambo gato, muito difícil.',
+    category: 'Cotidiano'
+  },
+  {
+    id: '30',
+    term: 'Bibi',
+    definition: 'Camisa, vestuário superior.',
+    example: 'Gostei da tua bibi nova, onde compraste?',
+    category: 'Cotidiano'
+  },
+  {
+    id: '31',
+    term: 'Pila Doce',
+    definition: 'Calção muito curto, estilo "hot pants".',
+    example: 'Ela está a bangar com aquele pila doce.',
+    category: 'Juventude',
+    synonyms: ['Parti Cama']
+  },
+  {
+    id: '32',
+    term: 'Bater na Rocha',
+    definition: 'Fracassar, não ter sucesso, encontrar um obstáculo insuperável.',
+    example: 'Tentei falar com ela, mas bati na rocha.',
+    category: 'Rua'
+  },
+  {
+    id: '33',
+    term: 'As Tropas',
+    definition: 'Olá Pessoal / E aí malta.',
+    example: 'As tropas, como é que vocês estão?',
+    category: 'Saudações',
+    origin: 'Geral'
+  },
+  {
+    id: '34',
+    term: 'Do Babulo',
+    definition: 'Tranquilo? / Está tudo bem?',
+    example: 'E aí kamba, do babulo ou houve maka?',
+    category: 'Saudações',
+    origin: 'Geral'
+  },
+  {
+    id: '35',
+    term: 'É como',
+    definition: 'Como estais / Como vai isso?',
+    example: 'É como, meu kota? Tudo em ordem?',
+    category: 'Saudações',
+    origin: 'Geral'
+  },
+  {
+    id: '36',
+    term: 'Mekie',
+    definition: 'Como vai / Olá / Qual é a dica?',
+    example: 'Mekie, kamba! Há quanto tempo!',
+    category: 'Saudações',
+    origin: 'Geral',
+    synonyms: ['Mekie-mé']
   }
 ];
 
-export const SUBSCRIPTION_PRICE = "$3.00";
+export const SUBSCRIPTION_PRICE = "$5.00";
 export const TRIAL_DAYS = 7;

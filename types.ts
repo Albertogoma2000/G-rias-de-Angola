@@ -1,4 +1,4 @@
-export type Category = 'Rua' | 'Juventude' | 'Música' | 'Humor' | 'Cotidiano' | 'Internet' | 'Família' | 'Todas';
+export type Category = 'Rua' | 'Juventude' | 'Música' | 'Humor' | 'Cotidiano' | 'Internet' | 'Família' | 'Saudações' | 'Todas';
 
 export interface SlangItem {
   id: string;

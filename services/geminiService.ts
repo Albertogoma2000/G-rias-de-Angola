@@ -5,6 +5,15 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const MODEL_NAME = 'gemini-3-flash-preview';
 
+const handleGeminiError = (error: any, defaultMessage: string): string => {
+  console.error("Gemini API Error:", error);
+  const msg = error?.message || error?.toString() || "";
+  if (msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED") || msg.includes("quota")) {
+    return "⚠️ Muitos pedidos (429). Aguarde um momento.";
+  }
+  return defaultMessage;
+};
+
 /**
  * Translates standard Portuguese to Angolan Slang or explains a phrase.
  */
@@ -25,8 +34,7 @@ export const translateToAngolanSlang = async (text: string, direction: 'toSlang'
 
     return response.text || "Não foi possível traduzir no momento. Tente novamente.";
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "Erro ao conectar com a IA. Verifique sua conexão.";
+    return handleGeminiError(error, "Erro ao conectar com a IA. Verifique sua conexão.");
   }
 };
 
@@ -44,7 +52,30 @@ export const getCulturalContext = async (term: string): Promise<string> => {
 
     return response.text || "Informação indisponível.";
   } catch (error) {
-    console.error("Gemini Context Error:", error);
-    return "Não foi possível carregar o contexto cultural.";
+    return handleGeminiError(error, "Não foi possível carregar o contexto cultural.");
+  }
+};
+
+/**
+ * Translates a slang term and its definition to a target international language.
+ */
+export const translateSlangToInternational = async (term: string, definition: string, targetLanguage: 'English' | 'French'): Promise<string> => {
+  try {
+    const prompt = `Translate the Angolan slang term "${term}" (which means: "${definition}") to ${targetLanguage}. 
+    Provide the translation for the term (if a close equivalent exists in ${targetLanguage} slang) and the translation for the definition.
+    Format as: "Term: [Translated Term] | Definition: [Translated Definition]". 
+    Be culturally accurate to ${targetLanguage}. Keep it short.`;
+
+    const response = await ai.models.generateContent({
+      model: MODEL_NAME,
+      contents: prompt,
+      config: {
+        temperature: 0.3, // Accuracy over creativity
+      }
+    });
+
+    return response.text || "Translation error.";
+  } catch (error) {
+    return handleGeminiError(error, "Erro ao traduzir. Tente novamente.");
   }
 };
