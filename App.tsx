@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Search, Book, Sparkles, User, Heart, Moon, Sun, 
   Volume2, Share2, Info, ArrowRight, Lock, Crown, LogOut,
-  Facebook, Mail, Chrome, Filter, Languages, Globe
+  Facebook, Mail, Chrome, Filter, Languages, Globe, Github
 } from 'lucide-react';
 import { INITIAL_SLANG_DATA, CATEGORIES, SUBSCRIPTION_PRICE } from './constants';
 import { SlangItem, Category, ViewState, UserProfile } from './types';
@@ -18,7 +18,8 @@ const Button = ({ children, onClick, variant = 'primary', className = '', disabl
     outline: "border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:border-angola-red hover:text-angola-red",
     premium: "bg-gradient-to-r from-angola-yellow to-yellow-500 text-black shadow-lg shadow-yellow-200",
     google: "bg-white text-gray-700 border border-gray-200 shadow-sm hover:bg-gray-50",
-    facebook: "bg-[#1877F2] text-white hover:bg-[#166fe5]"
+    facebook: "bg-[#1877F2] text-white hover:bg-[#166fe5]",
+    github: "bg-[#24292F] text-white hover:bg-[#2f363d] shadow-md"
   };
   // @ts-ignore
   return <button onClick={onClick} disabled={disabled} className={`${baseStyle} ${variants[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}>{children}</button>;
@@ -209,10 +210,10 @@ const Header = ({ darkMode, toggleTheme }: { darkMode: boolean, toggleTheme: () 
   </header>
 );
 
-const LandingPage = ({ onLogin }: { onLogin: (provider: 'google' | 'facebook') => void }) => {
+const LandingPage = ({ onLogin }: { onLogin: (provider: 'google' | 'facebook' | 'github') => void }) => {
   const [loading, setLoading] = useState<string | null>(null);
 
-  const handleLogin = (provider: 'google' | 'facebook') => {
+  const handleLogin = (provider: 'google' | 'facebook' | 'github') => {
     setLoading(provider);
     setTimeout(() => onLogin(provider), 1500);
   };
@@ -244,6 +245,14 @@ const LandingPage = ({ onLogin }: { onLogin: (provider: 'google' | 'facebook') =
             disabled={!!loading}
           >
             {loading === 'facebook' ? 'A conectar...' : <><Facebook size={20} fill="currentColor" /> Entrar com Facebook</>}
+          </Button>
+          <Button 
+            variant="github" 
+            className="w-full py-4 shadow-md"
+            onClick={() => handleLogin('github')}
+            disabled={!!loading}
+          >
+            {loading === 'github' ? 'A conectar...' : <><Github size={20} /> Entrar com GitHub</>}
           </Button>
           
           <div className="pt-4 text-xs text-gray-400 font-medium">
@@ -312,9 +321,14 @@ const App = () => {
   }, [darkMode]);
 
   // Handlers
-  const handleLogin = (provider: 'google' | 'facebook') => {
+  const handleLogin = (provider: 'google' | 'facebook' | 'github') => {
+    let name = 'Utilizador';
+    if (provider === 'google') name = 'Kamba do Google';
+    if (provider === 'facebook') name = 'Amigo do Facebook';
+    if (provider === 'github') name = 'Dev do GitHub';
+
     setUser({
-      name: provider === 'google' ? 'Kamba do Google' : 'Amigo do Facebook',
+      name,
       email: `${provider}@exemplo.ao`,
     });
   };
